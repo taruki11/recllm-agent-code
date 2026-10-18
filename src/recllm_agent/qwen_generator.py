@@ -29,21 +29,21 @@ class QwenGenerator:
                 bnb_4bit_quant_type="nf4",
                 bnb_4bit_compute_dtype=torch.float16,
             )
-            self._tokenizer = AutoTokenizer.from_pretrained(self.model_path, trust_remote_code=True)
+            self._tokenizer = AutoTokenizer.from_pretrained(self.model_path, trust_remote_code=False)
             self._model = AutoModelForCausalLM.from_pretrained(
                 self.model_path,
                 torch_dtype=torch.float16,
                 device_map="auto",
-                trust_remote_code=True,
+                trust_remote_code=False,
                 quantization_config=bnb_config,
             )
         else:
-            self._tokenizer = AutoTokenizer.from_pretrained(self.model_path, trust_remote_code=True)
+            self._tokenizer = AutoTokenizer.from_pretrained(self.model_path, trust_remote_code=False)
             self._model = AutoModelForCausalLM.from_pretrained(
                 self.model_path,
                 torch_dtype=torch.float16,
                 device_map="auto",
-                trust_remote_code=True,
+                trust_remote_code=False,
             )
         if self.adapter_path:
             self._model = PeftModel.from_pretrained(self._model, self.adapter_path)
