@@ -1,0 +1,10 @@
+{
+  "raw_dir": "data/raw_docs",
+  "chunks_out": "data/processed/chunks.jsonl",
+  "bm25_index": "indexes/bm25/index.json",
+  "eval_path": "data/eval/questions.jsonl",
+  "chunk_size": 700,
+  "overlap": 100,
+  "top_k": 5,
+  "python": "python"
+}
